@@ -12,3 +12,8 @@ cerebroiq.db
 *.db
 
 dataset/
+model/*.keras
+model/*.png
+model/threshold_*.txt
+!model/stroke_model_v4.keras
+!model/threshold.txt
