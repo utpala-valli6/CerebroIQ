@@ -85,10 +85,10 @@ def preprocess_image(image):
     image = image.convert("RGB")
     image = image.resize(IMAGE_SIZE)
 
-    image = np.array(image).astype("float32")
-    image = np.expand_dims(image, axis=0)
+    image_array = np.asarray(image, dtype=np.float32)
+    image_array = np.expand_dims(image_array, axis=0)
 
-    return image
+    return image_array
 
 
 # ---------------- HOME / DASHBOARD ----------------
@@ -150,12 +150,12 @@ def predict():
         processed_image = preprocess_image(image)
 
         # Model prediction
-        probability = float(
-            model.predict(
-                processed_image,
-                verbose=0
-            )[0][0]
-        )
+        prediction = model(
+        processed_image,
+        training=False
+    )
+
+        probability = float(prediction.numpy()[0][0])
 
         print("Stroke probability:", round(probability, 4))
         print("Decision threshold:", THRESHOLD)
