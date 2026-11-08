@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+venv/
+.venv/
+.env
+*.log
+
+static/uploads/*
+!static/uploads/.gitkeep
+
+cerebroiq.db
+*.db
+
+dataset/
